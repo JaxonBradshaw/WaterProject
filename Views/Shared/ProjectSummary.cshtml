@@ -1,0 +1,31 @@
+﻿@model Project  
+
+
+<div class="card card-outline-primary m-1 p-1">
+    <div class="bg-faded p-1">
+        <h4>
+            Program Name: @Model.Program
+            <span class="badge badge-pill badge-primary" style="float:right">
+                <p>Impact: @Model.Impact people served</p>
+            </span>
+        </h4>
+        <p>Program Type: @Model.Type</p>
+
+        <p>Completion Date: @Model.CompletionDate</p>
+        <div class="card-text p-1">
+            <p>Phase: @Model.Phase</p>
+        </div>
+    </div>
+
+    <form id="@Model.ProjectId" asp-page="/Donate" method="post">
+        <input type="hidden" asp-for="ProjectId" />
+        <input type="hidden" name="returnUrl" value="@ViewContext.HttpContext.Request.PathAndQuery()" />
+        <span class="card-text p-1">
+            @Model.Program
+            <button type="submit" class="btn-success btn-sm pull-right" style="float:right">
+                Donate
+            </button>
+        </span>
+    </form>
+
+</div>
